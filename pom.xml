@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>MavenProfileDemo</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <!--<module>Module1</module>-->
+        <!--<module>Module2</module>-->
+        <!--<module>Module3</module>-->
+        <module>Common</module>
+        <module>Connector</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>p1</id>
+            <activation>
+                <!--<activeByDefault>true</activeByDefault>-->
+            </activation>
+            <modules>
+                <module>Module1</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>p2</id>
+            <activation>
+                <!--<activeByDefault>true</activeByDefault>-->
+            </activation>
+            <modules>
+                <module>Module2</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>p3</id>
+            <modules>
+                <module>Module3</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>p_12</id>
+            <!--<activation>-->
+            <!--    <activeByDefault>true</activeByDefault>-->
+            <!--    <property>-->
+            <!--        <name>default</name>-->
+            <!--        <value>!disabled</value>-->
+            <!--    </property>-->
+            <!--</activation>-->
+            <properties>
+                <package.environment>product</package.environment>
+                <log4j2.version>2.17.0</log4j2.version>
+            </properties>
+            <modules>
+                <module>Module1</module>
+                <module>Module2</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>p_13</id>
+            <properties>
+                <package.environment>dev</package.environment>
+                <log4j2.version>2.16.0</log4j2.version>
+            </properties>
+            <modules>
+                <module>Module1</module>
+                <module>Module3</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>p_23</id>
+            <modules>
+                <module>Module2</module>
+                <module>Module3</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>p_123</id>
+            <!--            <activation>
+                            <activeByDefault>true</activeByDefault>
+                        </activation>-->
+            <properties>
+                <package.environment>product</package.environment>
+                <log4j2.version>2.17.0</log4j2.version>
+            </properties>
+            <modules>
+                <module>Module1</module>
+                <module>Module2</module>
+                <module>Module3</module>
+            </modules>
+        </profile>
+    </profiles>
+</project>
